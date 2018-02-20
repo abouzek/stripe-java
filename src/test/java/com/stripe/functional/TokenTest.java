@@ -1,6 +1,6 @@
 package com.stripe.functional;
 
-import com.stripe.BaseStripeFunctionalTest;
+import com.stripe.BaseStripeMockTest;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -13,8 +13,9 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
-public class TokenTest extends BaseStripeFunctionalTest {
+public class TokenTest extends BaseStripeMockTest {
 	private Map<String, Object> getTokenParams() {
 		Map<String, Object> tokenParams = new HashMap<String, Object>();
 		Map<String, Object> cardParams = new HashMap<String, Object>();
@@ -30,7 +31,7 @@ public class TokenTest extends BaseStripeFunctionalTest {
 	@Test
 	public void testTokenCreate() throws StripeException {
 		Token token = Token.create(getTokenParams());
-		assertFalse(token.getUsed());
+		assertNotNull(token);
 	}
 
 	@Test
